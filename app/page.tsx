@@ -1,7 +1,14 @@
-export default function Home() {
+import { createClient } from "@/lib/supabase/browserClient";
+
+export default async function Home() {
+  const supabase = createClient()
+  const {data, error} = await supabase.from('Posts').select("*")
+  console.log("data", data);
+  console.log("Error", error);
+  
   return (
     <div className="m-4">
-      <h1 className="heading">Bonjour</h1>
+      <h1 className="heading">こんにちは</h1>
     </div>
   );
 }
