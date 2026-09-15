@@ -5,13 +5,19 @@
 }
 
 @theme {
- --color-spring: #20FC8F;
- --color-mineral: #3F5E5A;
- --color-lunar: #38423B;
- --color-metal: #353831;
- --color-tuatara: #2D2D2A;
-
+  --color-spring: #20fc8f;
+  --color-mineral: #3f5e5a;
+  --color-lunar: #38423b;
+  --color-metal: #353831;
+  --color-tuatara: #2d2d2a;
 }
 
-.button {@apply inline-block p-4 rounded-xl bg-spring text-lunar text-2xl font-bold }
-.button-secondary {@apply inline-block p-4 rounded-xl bg-mineral text-metal text-2xl font-bold }
+.button {
+  @apply inline-block p-4 rounded-xl bg-spring text-lunar text-2xl font-bold hover:scale-105 transition hover:bg-lunar hover:text-spring;
+}
+.button-secondary {
+  @apply text-white inline-block p-4 rounded-xl bg-mineral text-metal text-2xl font-bold hover:scale-105 transition hover:scale-105 transition hover:bg-metal;
+}
+.heading {
+  @apply text-4xl text-center;
+}
