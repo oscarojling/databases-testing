@@ -5,19 +5,54 @@
 }
 
 @theme {
-  --color-spring: #20fc8f;
-  --color-mineral: #3f5e5a;
-  --color-lunar: #38423b;
-  --color-metal: #353831;
-  --color-tuatara: #2d2d2a;
+  --color-bubblegum: #ff8fc7;
+  --color-lilac: #c9a8f0;
+  --color-mint: #a0f0c8;
+  --color-peach: #ffcba4;
+  --color-sky: #aee1ff;
+  --color-cream: #fff3f8;
+  --color-plum: #5c3a52;
+}
+
+body {
+  font-family: "Baloo 2", "Comic Sans MS", ui-rounded, "Segoe UI Rounded", system-ui, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-plum);
+}
+
+.heading {
+  @apply text-4xl text-center font-bold;
+  color: var(--color-plum);
+  text-shadow: 2px 2px 0 var(--color-bubblegum);
 }
 
 .button {
-  @apply inline-block p-4 rounded-xl bg-spring text-lunar text-2xl font-bold hover:scale-105 transition hover:bg-lunar hover:text-spring;
+  @apply inline-block px-8 py-4 rounded-full bg-bubblegum text-cream text-2xl font-bold transition;
+  border: 3px solid var(--color-cream);
+  box-shadow: 4px 4px 0 var(--color-plum);
 }
+.button:hover {
+  transform: translate(-2px, -2px) rotate(-2deg);
+  box-shadow: 6px 6px 0 var(--color-plum);
+  background: var(--color-lilac);
+}
+.button:active {
+  transform: translate(2px, 2px) rotate(0deg);
+  box-shadow: 1px 1px 0 var(--color-plum);
+}
+
 .button-secondary {
-  @apply text-white inline-block p-4 rounded-xl bg-mineral text-metal text-2xl font-bold hover:scale-105 transition hover:scale-105 hover:bg-metal;
+  @apply inline-block px-8 py-4 rounded-full bg-mint text-plum text-2xl font-bold transition;
+  border: 3px solid var(--color-cream);
+  box-shadow: 4px 4px 0 var(--color-plum);
 }
-.heading {
-  @apply text-4xl text-center;
+.button-secondary:hover {
+  transform: translate(-2px, -2px) rotate(2deg);
+  box-shadow: 6px 6px 0 var(--color-plum);
+  background: var(--color-peach);
 }
+.button-secondary:active {
+  transform: translate(2px, 2px) rotate(0deg);
+  box-shadow: 1px 1px 0 var(--color-plum);
+}
+
