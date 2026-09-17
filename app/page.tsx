@@ -1,3 +1,4 @@
+import HomePosts from "@/components/HomePosts";
 import { getHomePost } from "@/lib/supabase/queries";
 
 export default async function Home() {
@@ -10,7 +11,7 @@ export default async function Home() {
   return (
     <div className="m-4">
       <h1 className="heading">こんにちは</h1>
-      {data && data.map(post => <div key={post.id}>{post.title} by {post.author.username}</div>)}
+      {data && <HomePosts posts={data} />}
     </div>
   );
 }
