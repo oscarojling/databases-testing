@@ -10,4 +10,14 @@ export const getHomePost = async () => {
     .order("created_at", { ascending: false });
 };
 
+export const getSinglePost = async(slug: string) => {
+    const supabase = createClient(); 
+    return await supabase.from('Posts')
+            .select('title, content, author("id", "username")')
+            .eq('slug', slug)
+            .single()
+}
+
 export type HomePostType = QueryData<ReturnType<typeof getHomePost>>;
+
+export type SinglePostType = QueryData<ReturnType<typeof getSinglePost>>;
