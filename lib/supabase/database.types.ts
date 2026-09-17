@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       Posts: {
         Row: {
+          author: string
           category: string | null
           content: string | null
           created_at: string
@@ -23,9 +24,9 @@ export type Database = {
           image: string | null
           slug: string
           title: string
-          username: string
         }
         Insert: {
+          author: string
           category?: string | null
           content?: string | null
           created_at?: string
@@ -33,9 +34,9 @@ export type Database = {
           image?: string | null
           slug: string
           title: string
-          username: string
         }
         Update: {
+          author?: string
           category?: string | null
           content?: string | null
           created_at?: string
@@ -43,15 +44,14 @@ export type Database = {
           image?: string | null
           slug?: string
           title?: string
-          username?: string
         }
         Relationships: [
           {
-            foreignKeyName: "Posts_username_fkey"
-            columns: ["username"]
+            foreignKeyName: "Posts_author_fkey"
+            columns: ["author"]
             isOneToOne: false
             referencedRelation: "Users"
-            referencedColumns: ["username"]
+            referencedColumns: ["id"]
           },
         ]
       }

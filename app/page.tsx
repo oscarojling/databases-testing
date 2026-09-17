@@ -1,15 +1,17 @@
-import { createClient } from "@/lib/supabase/browserClient";
+import { getHomePost } from "@/lib/supabase/queries";
 
 export default async function Home() {
-  const supabase = createClient()
-  const {data, error} = await supabase.from('Posts').select("*")
+  const {data, error} =  await getHomePost()
+
+
   console.log("data", data);
   console.log("Error", error);
   
   return (
     <div className="m-4">
       <h1 className="heading">こんにちは</h1>
-      {data && data.map((item, index) => <div key={index}>{item.title}</div>)}
+      {data && data.map(post => <div key={post.id}>{post.title} by {post.author.username}</div>)}
     </div>
   );
 }
+
