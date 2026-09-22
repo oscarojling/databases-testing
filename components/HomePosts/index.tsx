@@ -1,10 +1,24 @@
-import { HomePostType } from "@/lib/supabase/queries";
+"use client";
+import { getHomePost, HomePostType } from "@/lib/supabase/queries";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 const HomePosts = ({ posts }: { posts: HomePostType }) => {
+  const { data } = useQuery({
+    queryKey: ["home-post"],
+    queryFn: async () => {
+      const { data, error } = await getHomePost();
+      if (error) throw new Error();
+      console.log("Component", data);
+      return data;
+    },
+    initialData: posts,
+    staleTime: 1000,
+  });
+
   return (
     <div className="grid gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
-      {posts.map((post) => (
+      {data.map((post) => (
         <Link
           key={post.id}
           href={`/${post.slug}`}
@@ -23,7 +37,10 @@ const HomePosts = ({ posts }: { posts: HomePostType }) => {
               {post.author.username?.[0]?.toUpperCase()}
             </span>
             <p className="text-sm text-plum/70">
-              by <span className="font-semibold text-plum">{post.author.username}</span>
+              by{" "}
+              <span className="font-semibold text-plum">
+                {post.author.username}
+              </span>
             </p>
           </div>
         </Link>

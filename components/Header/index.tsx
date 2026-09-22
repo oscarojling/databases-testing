@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AccountLinks from "./accountLinks";
+import Search from "./search";
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <Link href="/" className="button">
         Oscar
       </Link>
+      <Search />
       <AccountLinks />
     </header>
   );
