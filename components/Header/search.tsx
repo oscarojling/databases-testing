@@ -19,23 +19,23 @@ const Search = () => {
 
   return (
     <div className="relative">
-    <div className="flex items-center overflow-hidden rounded-full border-2 border-plum/10 bg-white shadow-[4px_4px_0_var(--color-plum)] focus-within:border-lilac">
+    <div className="flex items-center overflow-hidden rounded-md border  border-line bg-white focus-within:border-accent">
       <input
         onChange={handleChange}
         placeholder="Search for posts"
         value={input}
-        className="flex-1 bg-transparent px-5 py-3 text-plum placeholder-plum/40 outline-none"
+        className="flex-1 bg-transparent px-4 py-2 text-ink placeholder-ink/40 outline-none"
       />
       <button
         onClick={handleClick}
-        className="bg-bubblegum px-6 py-3 font-bold text-cream transition hover:bg-lilac"
+        className="bg-accent px-4 py-2 font-semibold text-white transition hover:bg-accent-dark"
       >
         Search
       </button>
     </div>
     {searchResults && 
-    <div className="absolute left-0 top-full z-10 mt-2 w-full rounded-2xl border-2 border-plum/10 bg-white p-2 shadow-[4px_4px_0_var(--color-plum)]">
-      {searchResults.map((result, index) => <Link className="block rounded-xl px-3 py-2 font-semibold text-plum transition hover:bg-mint/40" key={index} href={`/${result.slug}`}>{result.title}</Link>)}
+    <div className="absolute left-0 top-full z-10 mt-1 w-full rounded-md border border-line bg-white p-1 shadow-md">
+      {searchResults.map((result, index) => <Link onClick={() => setSearchResults(null)} className="block rounded px-3 py-2 font-semibold text-ink transition hover:bg-ice" key={index} href={`/${result.slug}`}>{result.title}</Link>)}
       </div>
       }
     </div>
