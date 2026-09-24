@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SignUpForm from "./form";
+import LogInForm from "../login/form";
 
 const SignUpPage = () => {
   return (

@@ -7,7 +7,7 @@ const Header = () => {
     <header>
       <div className="flex flex-col gap-3 bg-navy p-4 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="text-2xl font-bold text-white">
-          Scout Boards
+          Talent Boards
         </Link>
         <Search />
       </div>

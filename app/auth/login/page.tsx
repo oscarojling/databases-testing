@@ -1,9 +1,11 @@
 import Link from "next/link";
+import LogInForm from "./form";
 
 const LogInPage = () => {
   return (
     <div className="text-center">
       <h1 className="heading my-4">Log In Page</h1>
+      <LogInForm />
       <span className="flex flex-col">
         Don't have an account?
         <Link href="/auth/signup" className="text-accent-dark font-bold mx-2">

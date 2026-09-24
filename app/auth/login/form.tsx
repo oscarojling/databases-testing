@@ -1,19 +1,11 @@
 "use client";
 
-import { SignUp } from "@/actions/signup-action";
+import { LogIn } from "@/actions/login-action";
 
-const SignUpForm = () => {
+const LogInForm = () => {
   return (
     <div>
       <form className="flex flex-col max-w-md mx-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6">
-        <label htmlFor="username">Enter your Username</label>
-        <input
-          className="input"
-          name="username"
-          placeholder="Username..."
-          autoComplete="username"
-          required
-        />
         <label htmlFor="Email">Enter your Email</label>
         <input
           className="input"
@@ -29,12 +21,12 @@ const SignUpForm = () => {
           type="password"
           placeholder="Password..."
         />
-        <button className="button mt-2 cursor-pointer" formAction={SignUp}>
-          Sign Up
+        <button className="button mt-2 cursor-pointer" formAction={LogIn}>
+          Log In
         </button>
       </form>
     </div>
   );
 };
 
-export default SignUpForm;
+export default LogInForm;

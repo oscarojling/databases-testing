@@ -5,7 +5,7 @@
 }
 
 @theme {
-  --color-navy: #0f1e33;;
+  --color-navy: #0f1e33;
   --color-steel: #1f3a5f;
   --color-ice: #eef3f8;
   --color-line: #d5dde8;
@@ -16,7 +16,10 @@
 
 body {
   @apply bg-ice text-ink text-sm md:text-base;
-  font-family: "Inter", "Segoe UI" system-ui, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI" system-ui,
+    sans-serif;
 }
 
 .heading {
@@ -24,23 +27,23 @@ body {
 }
 
 .button {
-  @apply inline-block px-4 py-2 rounded bg-accent text-white font-semibold transition;
+  @apply cursor-pointer inline-block px-4 py-2 rounded bg-accent text-white font-semibold transition;
 }
 .button:hover {
-@apply bg-accent-dark
+  @apply bg-accent-dark;
 }
 
 .button-secondary {
-  @apply inline-block px-4 py-2 rounded bg-white text-steel font-semibold border border-line transition;
+  @apply cursor-pointer inline-block px-4 py-2 rounded bg-white text-steel font-semibold border border-line transition;
 }
 .button-secondary:hover {
- @apply border-steel
+  @apply border-steel;
 }
 
 .input {
-  @apply w-full px-3 py-2 my-2 rounded bg-white border border-line
+  @apply w-full px-3 py-2 my-2 rounded bg-white border border-line;
 }
 
 .input:focus {
-  @apply outline-none border-accent ring-2 ring-accent/20
+  @apply outline-none border-accent ring-2 ring-accent/20;
 }
