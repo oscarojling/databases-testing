@@ -11,7 +11,7 @@ export const getHomePost = async (supabase: ReturnType<typeof createClient>) => 
 export const getCategory = async(slug: string) => {
     const supabase = createClient(); 
     return await supabase.from('Categories')
-            .select('id, name, slug, posts ("id", "title", "slug", author("username"))')
+            .select('id, name, slug, Posts ("id", "title", "slug", author("username"))')
             .eq('slug', slug) //How you fetch specific content
             .single()
 }

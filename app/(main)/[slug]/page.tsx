@@ -13,7 +13,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           </h1>
 
           <p className="mt-2 mb-6 text-sm text-ink/60">
-            by {data.author.username?.[0]?.toUpperCase()}
+            by {data.author.username}
           </p>
 
           {data.content && (
