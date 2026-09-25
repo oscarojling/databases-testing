@@ -1,37 +1,60 @@
 "use client";
 
 import { SignUp } from "@/actions/signup-action";
+import { signUpSchema } from "@/actions/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import ErrorMessage from "@/components/ErrorMessage";
+import { useMutation } from "@tanstack/react-query";
 
 const SignUpForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(signUpSchema),
+  });
+
+  const { mutate, error, isPending } = useMutation({
+    mutationFn: SignUp,
+  });
+
   return (
     <div>
-      <form className="flex flex-col max-w-md mx-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6">
+      <form
+        onSubmit={handleSubmit((values) => mutate(values))}
+        className="flex flex-col max-w-md mx-auto mb-4 rounded-md border border-line bg-white p-4 text-left md:p-6"
+      >
         <label htmlFor="username">Enter your Username</label>
         <input
           className="input"
-          name="username"
+          {...register("username")}
           placeholder="Username..."
           autoComplete="username"
-          required
         />
+        {errors.username && <ErrorMessage error={errors.username.message!} />}
+
         <label htmlFor="Email">Enter your Email</label>
         <input
           className="input"
-          name="email"
+          {...register("email")}
           placeholder="Email..."
           autoComplete="email"
-          required
         />
+        {errors.email && <ErrorMessage error={errors.email.message!} />}
+
         <label htmlFor="password">Enter your Password</label>
         <input
           className="input"
-          name="password"
+          {...register("password")}
           type="password"
           placeholder="Password..."
         />
-        <button className="button mt-2 cursor-pointer" formAction={SignUp}>
-          Sign Up
-        </button>
+        {errors.password && <ErrorMessage error={errors.password.message!} />}
+
+        <button className="button mt-2 cursor-pointer">{isPending ? "Signing up..." : "Sign Up"}</button>
+        {error && <ErrorMessage error={error.message} />}
       </form>
     </div>
   );

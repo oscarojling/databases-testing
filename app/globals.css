@@ -12,6 +12,7 @@
   --color-ink: #1b2430;
   --color-accent: #14b8a6;
   --color-accent-dark: #0f8f82;
+  --color-danger: #dc2626;
 }
 
 body {
@@ -46,4 +47,8 @@ body {
 
 .input:focus {
   @apply outline-none border-accent ring-2 ring-accent/20;
+}
+
+.error {
+  @apply rounded-md border-danger/30 bg-danger/10 px-3 py-2 my-2 text-sm text-danger
 }

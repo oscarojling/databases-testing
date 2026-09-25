@@ -8,10 +8,18 @@ export const getHomePost = async (supabase: ReturnType<typeof createClient>) => 
     .order("created_at", { ascending: false });
 };
 
+export const getCategory = async(slug: string) => {
+    const supabase = createClient(); 
+    return await supabase.from('Categories')
+            .select('id, name, slug, posts ("id", "title", "slug", author("username"))')
+            .eq('slug', slug) //How you fetch specific content
+            .single()
+}
+
 export const getSinglePost = async(slug: string) => {
     const supabase = createClient(); 
     return await supabase.from('Posts')
-            .select('title, content, author("id", "username")')
+            .select('title, content, author("id", "username"), category("name", "slug")')
             .eq('slug', slug) //How you fetch specific content
             .single()
 }

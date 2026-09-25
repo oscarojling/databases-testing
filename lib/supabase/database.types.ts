@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      Categories: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
       Posts: {
         Row: {
           author: string
@@ -51,6 +72,13 @@ export type Database = {
             columns: ["author"]
             isOneToOne: false
             referencedRelation: "Users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "Posts_category_fkey"
+            columns: ["category"]
+            isOneToOne: false
+            referencedRelation: "Categories"
             referencedColumns: ["id"]
           },
         ]
