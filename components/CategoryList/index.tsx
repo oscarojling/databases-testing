@@ -11,7 +11,7 @@ const CategoryList = async () => {
         <Link
           key={category.id}
           href={`/category/${category.slug}`}
-          className="flex items-center justify-between px-4 py-3 border-t border-line hover:bg-ice"
+          className="flex items-center justify-between gap-4 px-4 py-3 border-t border-line hover:bg-ice"
         >
           <span className="font-semibold text-ink">{category.name}</span>
           <div className="text-center">
