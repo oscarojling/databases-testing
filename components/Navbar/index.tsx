@@ -2,7 +2,7 @@ import { LogOut } from "@/actions/logout-action";
 import { createClient } from "@/lib/supabase/serverClient";
 import Link from "next/link";
 
-const AccountLinks = async () => {
+const Navbar = async () => {
   const supabase = await createClient();
   const {
     data: { user },
@@ -33,4 +33,4 @@ const AccountLinks = async () => {
   );
 };
 
-export default AccountLinks;
+export default Navbar;

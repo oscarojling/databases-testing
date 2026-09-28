@@ -1,3 +1,4 @@
+import CategoryList from "@/components/CategoryList";
 import HomePosts from "@/components/HomePosts";
 import { getHomePost } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/serverClient";
@@ -13,6 +14,7 @@ export default async function Home() {
   return (
     <div className="m-4">
       <h1 className="heading">Forum List</h1>
+      <CategoryList />
       {data && <HomePosts posts={data} />}
     </div>
   );
