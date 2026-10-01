@@ -1,8 +1,17 @@
 import { getSinglePost } from "@/lib/supabase/queries";
+import { createClient } from "@/lib/supabase/serverClient";
+import DeleteButton from "./deleteButton";
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params;
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   const { data, error } = await getSinglePost(slug);
+
+  const isAuthor: boolean =
+    user && data && user.id === data.author.id ? true : false;
 
   return (
     <div className="mx-auto max-w-2xl p-4 md:py-12">
@@ -20,6 +29,11 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             <p className="whitespace-pre-line  leading-relaxed text-ink">
               {data.content}
             </p>
+          )}
+          {isAuthor && (
+            <div>
+              <DeleteButton id={data.id} />
+            </div>
           )}
         </article>
       )}

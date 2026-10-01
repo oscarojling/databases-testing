@@ -3,13 +3,11 @@ import HomePosts from "@/components/HomePosts";
 import { getHomePost } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/serverClient";
 
+export const revalidate = 600; //Replaces HomePost Query. Caching
 export default async function Home() {
   const supabase = await createClient();
 
   const { data, error } = await getHomePost(supabase);
-
-  console.log("data", data);
-  console.log("Error", error);
 
   return (
     <div className="m-4">

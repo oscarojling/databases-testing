@@ -5,22 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/browserClient";
 
 const HomePosts = ({ posts }: { posts: HomePostType }) => {
-  const supabase = createClient();
-  const { data } = useQuery({
-    queryKey: ["home-post"],
-    queryFn: async () => {
-      const { data, error } = await getHomePost(supabase);
-      if (error) throw new Error();
-      console.log("Component", data);
-      return data;
-    },
-    initialData: posts,
-    staleTime: 1000,
-  });
-
   return (
     <div className="grid gap-4 p-4 md:grid-cols-2">
-      {data.map((post) => (
+      {posts.map((post) => (
         <Link
           key={post.id}
           href={`/${post.slug}`}

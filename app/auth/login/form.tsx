@@ -24,8 +24,7 @@ const LogInForm = () => {
     <div>
       <form
         onSubmit={handleSubmit((values) => mutate(values))}
-        className="flex flex-col max-w-md mx-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6"
-      >
+        className="flex flex-col max-w-md mx-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6">
         <label htmlFor="Email">Enter your Email</label>
         <input
           className="input"

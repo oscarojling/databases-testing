@@ -32,7 +32,7 @@ export const getSinglePost = async (slug: string) => {
   return await supabase
     .from("Posts")
     .select(
-      'title, content, author("id", "username"), category("name", "slug")',
+      'id, title, content, author("id", "username"), category("name", "slug")',
     )
     .eq("slug", slug) //How you fetch specific content
     .single();
