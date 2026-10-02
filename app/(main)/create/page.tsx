@@ -61,7 +61,7 @@ const CreatePostPage = () => {
         <label htmlFor="content">Add some content (optional)</label>
         <textarea className="input" {...register("content")}></textarea>
         {errors.content && <ErrorMessage error={errors.content.message!} />}
-         <label htmlFor="category">Choose a forum</label>
+        <label htmlFor="category">Choose a forum</label>
         <select className="input" {...register("category")}>
           {data?.map((c) => (
             <option key={c.id} value={c.id}>

@@ -1,7 +1,7 @@
 "use client";
 
 import { EditPost } from "@/actions/edit-page-actions";
-import { createPostSchema } from "@/actions/schemas";
+import { editPostSchema } from "@/actions/schemas";
 import ErrorMessage from "@/components/ErrorMessage";
 import { type Tables } from "@/lib/supabase/database.types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,7 @@ const EditPageForm = ({
   initialValues: Pick<Tables<"Posts">, "title" | "content" | "image">;
   postId: string;
 }) => {
-  const postImageSchema = createPostSchema.omit({ image: true }).extend({
+  const postImageSchema = editPostSchema.omit({ image: true }).extend({
     image: z
       .unknown()
       .transform((value) => {
@@ -54,7 +54,6 @@ const EditPageForm = ({
           postdata: {
             title: values.title,
             content: values.content,
-            category: values.category,
             image: imageForm,
           },
           postId,

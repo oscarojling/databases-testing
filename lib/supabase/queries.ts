@@ -6,7 +6,7 @@ export const getCategory = async (slug: string) => {
   return await supabase
     .from("Categories")
     .select('id, name, slug, Posts ("id", "title", "slug", author("username"))')
-    .eq("slug", slug) //How you fetch specific content
+    .eq("slug", slug) 
     .single();
 };
 

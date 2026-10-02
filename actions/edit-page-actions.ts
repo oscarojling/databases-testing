@@ -1,7 +1,7 @@
 "use server";
 
 import z from "zod";
-import { createPostSchema } from "./schemas";
+import { editPostSchema } from "./schemas";
 import { createClient } from "@/lib/supabase/serverClient";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -11,10 +11,10 @@ export const EditPost = async ({
   postdata,
   postId,
 }: {
-  postdata: z.infer<typeof createPostSchema>;
+  postdata: z.infer<typeof editPostSchema>;
   postId: string;
 }) => {
-  const parsedData = createPostSchema.parse(postdata);
+  const parsedData = editPostSchema.parse(postdata);
   const supabase = await createClient();
 
   const imageFile = postdata.image?.get("image");
