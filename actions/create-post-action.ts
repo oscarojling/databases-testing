@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/serverClient";
 import { slugify } from "@/lib/supabase/slugify";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { uploadImage } from "@/lib/supabase/upload-image";
 
 export const CreatePost = async (
   postdata: z.infer<typeof createPostSchema>,
@@ -21,9 +22,17 @@ export const CreatePost = async (
 
   const slug = slugify(parsedData.title);
 
+  const imageFile = postdata.image?.get('image')
+  if (!(imageFile instanceof File) && imageFile !== null && imageFile !== "undefined")  {
+    throw Error ("Image is not in valid format")
+  }
+
+  const imageUrl = (imageFile && imageFile !== "undefined")  ? await uploadImage(imageFile) : null
+
   const { data, error } = await supabase.from("Posts").insert({
     ...parsedData,
     slug: slug,
+    image: imageUrl,
     author: user.id,
   });
 

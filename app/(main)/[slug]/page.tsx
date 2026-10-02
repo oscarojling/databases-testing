@@ -1,6 +1,7 @@
 import { getSinglePost } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/serverClient";
 import DeleteButton from "./deleteButton";
+import Link from "next/link";
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params;
@@ -16,7 +17,15 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="mx-auto max-w-2xl p-4 md:py-12">
       {data && (
+
         <article className="rounded-md border border-line bg-white p-4 md:p-8">
+           {data.image && (
+            <img
+              src={data.image}
+              alt={data.title}
+              className="mb-6 w-full rounded-md object-cover"
+            />
+          )}
           <h1 className="text-2xl font-bold text-navy md:text-3xl">
             {data.title}
           </h1>
@@ -31,8 +40,9 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             </p>
           )}
           {isAuthor && (
-            <div>
+            <div className="flex justify-between">
               <DeleteButton id={data.id} />
+              <Link className="button-secondary" href={`/${slug}/edit`}>Edit Post</Link>
             </div>
           )}
         </article>

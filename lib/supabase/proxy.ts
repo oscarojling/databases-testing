@@ -34,11 +34,12 @@ export const updateSession = async (request: NextRequest) => {
     error,
   } = await supabase.auth.getUser();
 
-  const protectedRoutes: string[] = [
-    "/create"
+  const protectedRoutes: RegExp[] = [
+    /^\/create$/,  
+    /^\/[^\/]+\/edit$/
   ];
 
-  if (!user && protectedRoutes.includes(request.nextUrl.pathname))
+  if (!user && protectedRoutes.some(route => route.test(request.nextUrl.pathname)))
     return NextResponse.redirect(new URL("/auth/signup", request.url))
 
   return supabaseResponse;

@@ -6,7 +6,7 @@ export const getHomePost = async (
 ) => {
   return await supabase
     .from("Posts")
-    .select('id, title, slug, author("id", "username")')
+    .select('id, title, slug, image, author("id", "username")')
     .order("created_at", { ascending: false });
 };
 
@@ -32,7 +32,7 @@ export const getSinglePost = async (slug: string) => {
   return await supabase
     .from("Posts")
     .select(
-      'id, title, content, author("id", "username"), category("name", "slug")',
+      'id, title, content, image, author("id", "username"), category("name", "slug")',
     )
     .eq("slug", slug) //How you fetch specific content
     .single();

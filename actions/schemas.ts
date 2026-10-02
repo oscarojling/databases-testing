@@ -14,4 +14,6 @@ export const signUpSchema = z.object({
 export const createPostSchema = z.object({
   title: z.string().min(6, "Your title must be 6 characaters long min!"),
   content: z.string().optional(),
+  category: z.string().min(1, "Please choose a forum"),
+  image: z.instanceof(FormData).optional()
 });
