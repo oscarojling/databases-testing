@@ -59,20 +59,30 @@ const EditPageForm = ({
           postId,
         });
       })}
-      className="flex flex-col w-full m-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6"
+      className="flex flex-col rounded-md border border-line bg-white p-4 md:p-6"
     >
-      <label htmlFor="title">Add a title</label>
+      <label htmlFor="title" className="label">
+        Title
+      </label>
       <input className="input" {...register("title")}></input>
       {errors.title && <ErrorMessage error={errors.title.message!} />}
-      <label htmlFor="content">Add some content (optional)</label>
+      <label htmlFor="content" className="label">
+        Content (optional)
+      </label>
       <textarea className="input" {...register("content")}></textarea>
       {initialValues.image && (
-        <img src={initialValues.image} alt={initialValues.title} />
+        <img
+          src={initialValues.image}
+          alt={initialValues.title}
+          className="self-center mt-2 max-h-48 w-fit rounded-md border border-line"
+        />
       )}
-      <label htmlFor="image">Change the Image? (optional)</label>
+      <label htmlFor="image" className="label">
+        Change the image (optional)
+      </label>
       <input className="input" type="file" {...register("image")} />
       {errors.image && <ErrorMessage error={errors.image.message!} />}
-      <button className="button mt-4">Edit Post</button>
+      <button className="button mt-6 self-end">Save changes</button>
       {error && <ErrorMessage error={error.message} />}
     </form>
   );

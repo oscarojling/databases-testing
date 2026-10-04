@@ -15,34 +15,33 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     user && data && user.id === data.author.id ? true : false;
 
   return (
-    <div className="mx-auto max-w-2xl p-4 md:py-12">
+    <div className="mx-auto max-w-3xl p-4 md:py-12">
       {data && (
-
-        <article className="rounded-md border border-line bg-white p-4 md:p-8">
-           {data.image && (
-            <img
-              src={data.image}
-              alt={data.title}
-              className="mb-6 w-full rounded-md object-cover"
-            />
-          )}
-          <h1 className="text-2xl font-bold text-navy md:text-3xl">
-            {data.title}
-          </h1>
-
-          <p className="mt-2 mb-6 text-sm text-ink/60">
+        <article className="rounded-md border border-line bg-white p-6">
+          <h1 className="text-2xl font-bold text-navy">{data.title}</h1>
+          <p className="mt-1 mb-6 text-sm text-ink/60">
             by {data.author.username}
           </p>
-
           {data.content && (
-            <p className="whitespace-pre-line  leading-relaxed text-ink">
+            <p className="whitespace-pre-line leading-relaxed text-ink">
               {data.content}
             </p>
           )}
+
+          {data.image && (
+            <img
+              src={data.image}
+              alt={data.title}
+              className="mt-6 max-h-96 rounded-md"
+            />
+          )}
+
           {isAuthor && (
-            <div className="flex justify-between">
+            <div className="mt-8 flex justify-end gap-2 border-t border-line pt-4">
               <DeleteButton id={data.id} />
-              <Link className="button-secondary" href={`/${slug}/edit`}>Edit Post</Link>
+              <Link className="button-secondary" href={`/${slug}/edit`}>
+                Edit Post
+              </Link>
             </div>
           )}
         </article>

@@ -18,8 +18,8 @@ const EditPostPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <>
       {data && (
-        <div className="w-lg mx-auto">
-          <h1 className="heading">Edit {data.title}</h1>
+        <div className="mx-auto w-full max-w-2xl p-4 md:py-12">
+          <h1 className="heading mb-4">Edit {data.title}</h1>
           <EditPageForm
             initialValues={{ title: data.title, content: data.content, image: data.image }}
             postId={data.id}

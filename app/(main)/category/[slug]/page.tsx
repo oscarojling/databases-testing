@@ -6,19 +6,28 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { data, error } = await getCategory(slug);
 
   return (
-    <div className="mx-auto max-w-4xl p-4 md:py-12">
+    <div className="mx-auto w-full max-w-4xl p-4 md:py-12">
       {data && (
         <>
           <h1 className="heading mb-4">{data?.name}</h1>
-          <div className="grid gap-2">
+          <div className="overflow-hidden rounded-md border border-line bg-white">
+            <h2 className="bg-steel px-4 py-2 font-bold text-white">Threads</h2>
             {data?.Posts.map((post) => (
               <Link
                 key={post.id}
                 href={`/${post.slug}`}
-                className="block rounded-md border border-line bg-white p-4 hover:border-accent"
+                className="flex items-center gap-3 border-t border-line px-4 py-3 hover:bg-ice"
               >
-                <h3 className="font-bold text-ink">{post.title}</h3>
-                <p className="text-sm text-ink/60">by {post.author.username}</p>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-navy text-sm font-bold text-white">
+                  {post.author.username?.[0]?.toUpperCase()}
+                </span>
+                <div className="flex-1">
+                  <p className="font-semibold text-navy">{post.title}</p>
+                  <p className="text-sm text-ink/60">by {post.author.username}</p>
+                </div>
+                <span className="shrink-0 text-sm text-ink/60">
+                  {new Date(post.created_at).toLocaleDateString()}
+                </span>
               </Link>
             ))}
           </div>

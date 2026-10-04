@@ -3,15 +3,15 @@ import LogInForm from "./form";
 
 const LogInPage = () => {
   return (
-    <div className="text-center">
-      <h1 className="heading my-4">Log In Page</h1>
+    <div className="mx-auto w-full max-w-md p-4 md:py-12">
+      <h1 className="heading mb-4">Log in</h1>
       <LogInForm />
-      <span className="flex flex-col">
+      <p className="mt-4 text-center text-sm text-ink/70">
         Don't have an account?
-        <Link href="/auth/signup" className="text-accent-dark font-bold mx-2">
-          Sign Up here
+        <Link href="/auth/signup" className="font-semibold text-accent-dark">
+          Sign up
         </Link>
-      </span>
+      </p>
     </div>
   );
 };

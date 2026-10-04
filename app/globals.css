@@ -52,3 +52,7 @@ body {
 .error {
   @apply rounded-md border-danger/30 bg-danger/10 px-3 py-2 my-2 text-sm text-danger
 }
+
+.label {
+  @apply mt-3 text-sm font-medium text-ink
+}

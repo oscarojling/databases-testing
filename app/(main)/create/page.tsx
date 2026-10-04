@@ -40,8 +40,8 @@ const CreatePostPage = () => {
   });
 
   return (
-    <div className="w-lg mx-auto">
-      <h1 className="heading">Create a Post</h1>
+    <div className="mx-auto w-full max-w-2xl p-4 md:py-12">
+      <h1 className="heading mb-4">Create a post</h1>
       <form
         onSubmit={handleSubmit((values) => {
           const imageForm = new FormData();
@@ -53,15 +53,21 @@ const CreatePostPage = () => {
             image: imageForm,
           });
         })}
-        className="flex flex-col w-full m-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6"
+        className="flex flex-col rounded-md border border-line bg-white p-4 md:p-6"
       >
-        <label htmlFor="title">Add a title</label>
+        <label htmlFor="title" className="label">
+          Add a title
+        </label>
         <input className="input" {...register("title")}></input>
         {errors.title && <ErrorMessage error={errors.title.message!} />}
-        <label htmlFor="content">Add some content (optional)</label>
+        <label htmlFor="content" className="label">
+          Add some content (optional)
+        </label>
         <textarea className="input" {...register("content")}></textarea>
         {errors.content && <ErrorMessage error={errors.content.message!} />}
-        <label htmlFor="category">Choose a forum</label>
+        <label htmlFor="category" className="label">
+          Choose a forum
+        </label>
         <select className="input" {...register("category")}>
           {data?.map((c) => (
             <option key={c.id} value={c.id}>
@@ -70,10 +76,12 @@ const CreatePostPage = () => {
           ))}
         </select>
         {errors.category && <ErrorMessage error={errors.category.message!} />}
-        <label htmlFor="image">Add an Image (optional)</label>
+        <label htmlFor="image" className="label">
+          Add an image (optional)
+        </label>
         <input className="input" type="file" {...register("image")} />
         {errors.image && <ErrorMessage error={errors.image.message!} />}
-        <button className="button mt-4">Create Post</button>
+        <button className="button mt-6 self-end">Create post</button>
         {error && <ErrorMessage error={error.message} />}
       </form>
     </div>

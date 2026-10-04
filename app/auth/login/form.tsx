@@ -24,8 +24,11 @@ const LogInForm = () => {
     <div>
       <form
         onSubmit={handleSubmit((values) => mutate(values))}
-        className="flex flex-col max-w-md mx-auto mb-4 rounded-md border-line bg-white p-4 text-left md:p-6">
-        <label htmlFor="Email">Enter your Email</label>
+        className="flex flex-col rounded-md border border-line bg-white p-4 md:p-6"
+      >
+        <label htmlFor="email" className="label">
+          Email
+        </label>
         <input
           className="input"
           {...register("email")}
@@ -33,7 +36,9 @@ const LogInForm = () => {
           autoComplete="email"
         />
         {errors.email && <ErrorMessage error={errors.email.message!} />}
-        <label htmlFor="password">Enter your Password</label>
+        <label htmlFor="password" className="label">
+          Password
+        </label>
         <input
           className="input"
           {...register("password")}
@@ -41,7 +46,9 @@ const LogInForm = () => {
           placeholder="Password..."
         />
         {errors.password && <ErrorMessage error={errors.password.message!} />}
-        <button className="button mt-2 cursor-pointer">{isPending ? "Logging in..." : "Log In"}</button>
+        <button className="button mt-6">
+          {isPending ? "Logging in..." : "Log In"}
+        </button>
         {error && <ErrorMessage error={error.message} />}
       </form>
     </div>

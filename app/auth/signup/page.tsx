@@ -4,15 +4,15 @@ import LogInForm from "../login/form";
 
 const SignUpPage = () => {
   return (
-    <div className="text-center">
-      <h1 className="heading my-4">Sign Up Page</h1>
+    <div className="mx-auto w-full max-w-md p-4 md:py-12">
+      <h1 className="heading mb-4">Sign up</h1>
       <SignUpForm />
-      <span className="flex flex-col">
+      <p className="mt-4 text-center text-sm text-ink/70">
         Already have an account?
-        <Link href="/auth/login" className="text-accent-dark font-bold mx-2">
-          Log In here
+        <Link href="/auth/login" className="font-semibold text-accent-dark">
+          Log in
         </Link>
-      </span>
+      </p>
     </div>
   );
 };

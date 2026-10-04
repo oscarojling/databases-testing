@@ -24,9 +24,9 @@ const SignUpForm = () => {
     <div>
       <form
         onSubmit={handleSubmit((values) => mutate(values))}
-        className="flex flex-col max-w-md mx-auto mb-4 rounded-md border border-line bg-white p-4 text-left md:p-6"
+        className="flex flex-col rounded-md border border-line bg-white p-4 md:p-6"
       >
-        <label htmlFor="username">Enter your Username</label>
+        <label htmlFor="username" className="label">Username</label>
         <input
           className="input"
           {...register("username")}
@@ -35,7 +35,7 @@ const SignUpForm = () => {
         />
         {errors.username && <ErrorMessage error={errors.username.message!} />}
 
-        <label htmlFor="Email">Enter your Email</label>
+        <label htmlFor="Email" className="label">Email</label>
         <input
           className="input"
           {...register("email")}
@@ -44,7 +44,7 @@ const SignUpForm = () => {
         />
         {errors.email && <ErrorMessage error={errors.email.message!} />}
 
-        <label htmlFor="password">Enter your Password</label>
+        <label htmlFor="password" className="label">Password</label>
         <input
           className="input"
           {...register("password")}
@@ -53,7 +53,7 @@ const SignUpForm = () => {
         />
         {errors.password && <ErrorMessage error={errors.password.message!} />}
 
-        <button className="button mt-2 cursor-pointer">{isPending ? "Signing up..." : "Sign Up"}</button>
+        <button className="button mt-6">{isPending ? "Signing up..." : "Sign Up"}</button>
         {error && <ErrorMessage error={error.message} />}
       </form>
     </div>
