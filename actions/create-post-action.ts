@@ -22,12 +22,19 @@ export const CreatePost = async (
 
   const slug = slugify(parsedData.title);
 
-  const imageFile = postdata.image?.get('image')
-  if (!(imageFile instanceof File) && imageFile !== null && imageFile !== "undefined")  {
-    throw Error ("Image is not in valid format")
+  const imageFile = postdata.image?.get("image");
+  if (
+    !(imageFile instanceof File) &&
+    imageFile !== null &&
+    imageFile !== "undefined"
+  ) {
+    throw Error("Image is not in valid format");
   }
 
-  const imageUrl = (imageFile && imageFile !== "undefined")  ? await uploadImage(imageFile) : null
+  const imageUrl =
+    imageFile && imageFile !== "undefined"
+      ? await uploadImage(imageFile)
+      : null;
 
   const { data, error } = await supabase.from("Posts").insert({
     ...parsedData,
