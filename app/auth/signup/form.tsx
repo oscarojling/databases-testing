@@ -26,7 +26,9 @@ const SignUpForm = () => {
         onSubmit={handleSubmit((values) => mutate(values))}
         className="flex flex-col rounded-md border border-line bg-white p-4 md:p-6"
       >
-        <label htmlFor="username" className="label">Username</label>
+        <label htmlFor="username" className="label">
+          Username
+        </label>
         <input
           className="input"
           {...register("username")}
@@ -35,7 +37,9 @@ const SignUpForm = () => {
         />
         {errors.username && <ErrorMessage error={errors.username.message!} />}
 
-        <label htmlFor="Email" className="label">Email</label>
+        <label htmlFor="Email" className="label">
+          Email
+        </label>
         <input
           className="input"
           {...register("email")}
@@ -44,7 +48,9 @@ const SignUpForm = () => {
         />
         {errors.email && <ErrorMessage error={errors.email.message!} />}
 
-        <label htmlFor="password" className="label">Password</label>
+        <label htmlFor="password" className="label">
+          Password
+        </label>
         <input
           className="input"
           {...register("password")}
@@ -53,7 +59,9 @@ const SignUpForm = () => {
         />
         {errors.password && <ErrorMessage error={errors.password.message!} />}
 
-        <button className="button mt-6">{isPending ? "Signing up..." : "Sign Up"}</button>
+        <button className="button mt-6">
+          {isPending ? "Signing up..." : "Sign up"}
+        </button>
         {error && <ErrorMessage error={error.message} />}
       </form>
     </div>

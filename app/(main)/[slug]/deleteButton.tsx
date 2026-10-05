@@ -9,13 +9,10 @@ const DeleteButton = ({ id }: { id: string }) => {
     mutationFn: DeletePost,
     onSettled: () => toast("Your post has been deleted"),
   });
-  if (isPending) {
-    return <span>Loading...</span>;
-  }
 
   return (
     <button onClick={() => mutate(id)} className="button-secondary">
-      Delete Post
+      {isPending ? "Deleting..." : "Delete post"}
     </button>
   );
 };

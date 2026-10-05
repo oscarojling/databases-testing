@@ -1,6 +1,6 @@
 import CategoryList from "@/components/CategoryList";
 
-export const revalidate = 600; //Replaces HomePost Query. Caching
+export const revalidate = 600; 
 export default async function Home() {
 
   return (
