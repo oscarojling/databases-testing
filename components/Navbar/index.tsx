@@ -13,19 +13,19 @@ const Navbar = async () => {
       {user ? (
         <>
           <div onClick={LogOut} className="button-secondary">
-            Log Out
+            Log out
           </div>
           <Link className="button-secondary" href="/create">
-            Create Post
+            Create post
           </Link>
         </>
       ) : (
         <>
           <Link className="button-secondary" href="/auth/login">
-            Log In
+            Log in
           </Link>
           <Link className="button-secondary" href="/auth/signup">
-            Sign Up
+            Sign up
           </Link>
         </>
       )}

@@ -47,7 +47,7 @@ const LogInForm = () => {
         />
         {errors.password && <ErrorMessage error={errors.password.message!} />}
         <button className="button mt-6">
-          {isPending ? "Logging in..." : "Log In"}
+          {isPending ? "Logging in..." : "Log in"}
         </button>
         {error && <ErrorMessage error={error.message} />}
       </form>

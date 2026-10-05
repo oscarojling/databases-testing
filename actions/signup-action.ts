@@ -6,7 +6,6 @@ import { signUpSchema } from "./schemas";
 import z from "zod";
 
 export const SignUp = async (userdata: z.infer<typeof signUpSchema>) => {
-
   const supabase = await createClient();
   const {
     data: { user },

@@ -37,7 +37,7 @@ const SignUpForm = () => {
         />
         {errors.username && <ErrorMessage error={errors.username.message!} />}
 
-        <label htmlFor="Email" className="label">
+        <label htmlFor="email" className="label">
           Email
         </label>
         <input
