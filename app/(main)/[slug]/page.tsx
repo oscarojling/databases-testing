@@ -16,7 +16,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     user && data && user.id === data.author.id ? true : false;
 
   return (
-    <div className="mx-auto w-full max-w-3xl p-4 md:py-12">
+    <div className="mx-auto w-full max-w-7xl p-4 md:py-12">
       {data && (
         <>
           <nav className="mb-4 flex items-center gap-1 text-base text-ink/60 md:text-sm">
@@ -33,33 +33,41 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             <ChevronRight className="h-5 w-5" />
             <span className="text-ink">{data.title}</span>
           </nav>
-          <article className="rounded-md border border-line bg-white p-6">
-            <h1 className="text-2xl font-bold text-navy">{data.title}</h1>
-            <p className="mt-1 mb-6 text-sm text-ink/60">
-              by {data.author.username}
-            </p>
-
-            {data.image && (
-              <img
-                src={data.image}
-                alt={data.title}
-                className="mt-6 max-h-96 rounded-md"
-              />
-            )}
-            {data.content && (
-              <p className="whitespace-pre-line leading-relaxed text-ink">
-                {data.content}
+          <article className="overflow-hidden rounded-md border border-line bg-white md:flex">
+            <div className="flex items-center gap-3 border-b border-line bg-ice/50 p-4 md:w-44 md:flex-col md:border-b-0 md:border-r">
+              <span className="flex h-12 w-12 items-center justify-center rounded bg-navy text-xl font-bold text-white">
+                {data.author.username?.[0]?.toUpperCase()}
+              </span>
+              <p className="font-semibold text-navy">{data.author.username}</p>
+            </div>
+            <div className="flex-1 p-6">
+              <h1 className="text-2xl font-bold text-navy">{data.title}</h1>
+              <p className="mt-1 mb-6 text-sm text-ink/60">
+                by {data.author.username}
               </p>
-            )}
 
-            {isAuthor && (
-              <div className="mt-8 flex justify-end gap-2 border-t border-line pt-4">
-                <DeleteButton id={data.id} />
-                <Link className="button-secondary" href={`/${slug}/edit`}>
-                  Edit post
-                </Link>
-              </div>
-            )}
+              {data.image && (
+                <img
+                  src={data.image}
+                  alt={data.title}
+                  className="mt-6 max-h-96 rounded-md"
+                />
+              )}
+              {data.content && (
+                <p className="whitespace-pre-line leading-relaxed text-ink">
+                  {data.content}
+                </p>
+              )}
+
+              {isAuthor && (
+                <div className="mt-8 flex justify-end gap-2 border-t border-line pt-4">
+                  <DeleteButton id={data.id} />
+                  <Link className="button-secondary" href={`/${slug}/edit`}>
+                    Edit post
+                  </Link>
+                </div>
+              )}
+            </div>
           </article>
         </>
       )}
