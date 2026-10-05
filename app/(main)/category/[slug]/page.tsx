@@ -1,4 +1,5 @@
 import { getCategory } from "@/lib/supabase/queries";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
@@ -10,6 +11,13 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
       {data && (
         <>
           <h1 className="heading mb-4">{data?.name}</h1>
+          <nav className="mb-4 flex items-center gap-1 text-base md:text-sm text-ink/60">
+            <Link href="/" className="hover:text-accent-dark">
+              Forums
+            </Link>
+            <ChevronRight className="h-5 w-5" />
+            <span className="text-ink">{data?.name}</span>
+          </nav>
           <div className="overflow-hidden rounded-md border border-line bg-white">
             <h2 className="bg-steel px-4 py-2 font-bold text-white">Threads</h2>
             {data?.Posts.map((post) => (
@@ -23,7 +31,9 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
                 </span>
                 <div className="flex-1">
                   <p className="font-semibold text-navy">{post.title}</p>
-                  <p className="text-sm text-ink/60">by {post.author.username}</p>
+                  <p className="text-sm text-ink/60">
+                    by {post.author.username}
+                  </p>
                 </div>
                 <span className="shrink-0 text-sm text-ink/60">
                   {new Date(post.created_at).toLocaleDateString()}
