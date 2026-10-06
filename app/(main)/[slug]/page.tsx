@@ -16,7 +16,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     user && data && user.id === data.author.id ? true : false;
 
   return (
-    <div className="mx-auto w-full max-w-7xl p-4 md:py-12">
+    <div className="mx-auto w-full max-w-7xl p-4 md:p-12">
       {data && (
         <>
           <nav className="mb-4 flex items-center gap-1 text-base text-ink/60 md:text-sm">
@@ -41,7 +41,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
               <p className="font-semibold text-navy">{data.author.username}</p>
             </div>
             <div className="flex-1 p-6">
-              <h1 className="text-2xl font-bold text-navy">{data.title}</h1>
+              <h1 className="text-2xl font-semibold text-navy">{data.title}</h1>
               <p className="mt-1 mb-6 text-sm text-ink/60">
                 by {data.author.username}
               </p>

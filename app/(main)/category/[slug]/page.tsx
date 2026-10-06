@@ -7,7 +7,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { data, error } = await getCategory(slug);
 
   return (
-    <div className="mx-auto w-full max-w-4xl p-4 md:py-12">
+    <div className="mx-auto w-full max-w-7xl p-4 md:py-12">
       {data && (
         <>
           <h1 className="heading mb-4">{data?.name}</h1>
