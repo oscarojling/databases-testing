@@ -1,8 +1,10 @@
-import { getSinglePost } from "@/lib/supabase/queries";
+import { getPostComment, getSinglePost } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/serverClient";
 import DeleteButton from "./deleteButton";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import CommentsContainer from "./CommentsContainer";
+import AddComment from "./AddComment";
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params;
@@ -69,6 +71,8 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
               )}
             </div>
           </article>
+          <CommentsContainer postid={data.id} />
+          {user &&  <AddComment postid={data.id} />}
         </>
       )}
     </div>

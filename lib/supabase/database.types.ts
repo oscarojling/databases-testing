@@ -35,6 +35,45 @@ export type Database = {
         }
         Relationships: []
       }
+      Comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          postid: string
+          userid: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          postid: string
+          userid: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          postid?: string
+          userid?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comments_postid_fkey"
+            columns: ["postid"]
+            isOneToOne: false
+            referencedRelation: "Posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_userid_fkey"
+            columns: ["userid"]
+            isOneToOne: false
+            referencedRelation: "Users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       Posts: {
         Row: {
           author: string

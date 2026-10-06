@@ -5,8 +5,10 @@ export const getCategory = async (slug: string) => {
   const supabase = createClient();
   return await supabase
     .from("Categories")
-    .select('id, name, slug, Posts ("id", "title", "slug", "created_at", author("username"))')
-    .eq("slug", slug) 
+    .select(
+      'id, name, slug, Posts ("id", "title", "slug", "created_at", author("username"))',
+    )
+    .eq("slug", slug)
     .single();
 };
 
@@ -25,7 +27,7 @@ export const getSinglePost = async (slug: string) => {
     .select(
       'id, title, content, image, author("id", "username"), category("name", "slug")',
     )
-    .eq("slug", slug) //How you fetch specific content
+    .eq("slug", slug)
     .single();
 };
 
@@ -36,6 +38,20 @@ export const searchPosts = async (searchTerm: string) => {
     .select("title, slug")
     .textSearch("title", searchTerm);
 };
+
+export const getPostComment = async (postid: string) => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("Comments")
+    .select("content, id, userid(id, username)")
+    .eq("postid", postid)
+    .order("created_at", { ascending: false });
+
+  if (error) console.log("Error", error);
+  return data;
+};
+
+export type CommentsType = QueryData<ReturnType<typeof getPostComment>>;
 
 export type SinglePostType = QueryData<ReturnType<typeof getSinglePost>>;
 
