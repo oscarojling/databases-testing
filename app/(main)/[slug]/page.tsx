@@ -71,7 +71,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
               )}
             </div>
           </article>
-          <CommentsContainer postid={data.id} />
+          <CommentsContainer postid={data.id} isAuthor={isAuthor} userid={user ? user.id : null} />
           {user &&  <AddComment postid={data.id} />}
         </>
       )}

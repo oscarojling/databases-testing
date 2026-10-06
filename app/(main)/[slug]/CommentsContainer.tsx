@@ -1,6 +1,7 @@
 import { CommentsType, getPostComment } from "@/lib/supabase/queries";
+import DeleteComment from "./deleteComment";
 
-const CommentContainer = async ({ postid }: { postid: string }) => {
+const CommentContainer = async ({ postid, isAuthor, userid }: { postid: string , isAuthor:boolean, userid: string | null}) => {
   const comments = await getPostComment(postid);
   return (
     <div className="flex items-center gap-3 border-b border-line bg-ice/50 p-4 md:w-44 md:flex-col md:border-b-0 md:border-r">
@@ -13,6 +14,7 @@ const CommentContainer = async ({ postid }: { postid: string }) => {
               <p className="whitespace-pre-line leading-relaxed text-ink">
                 {comment.userid.username}
               </p>
+              {(isAuthor || (userid === comment.userid.id)) && <DeleteComment commentId={comment.id} />}
             </div>
         ))
       ) : (

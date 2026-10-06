@@ -25,5 +25,5 @@ export const editPostSchema = z.object({
 });
 
 export const commentSchema = z.object({
-  content: z.string().min(3, "Comments must be at least 3 characters")
-})
+  content: z.string().min(3, "Comments must be at least 3 characters"),
+});
