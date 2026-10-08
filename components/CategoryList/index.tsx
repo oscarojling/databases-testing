@@ -15,8 +15,8 @@ const CategoryList = async () => {
         >
           <span className="font-semibold text-navy">{category.name}</span>
           <span className="shrink-0 text-sm text-center">
-              {category.Posts[0].count}{" "}
-              {category.Posts[0].count === 1 ? "thread" : "threads"}
+            {category.Posts[0].count}{" "}
+            {category.Posts[0].count === 1 ? "thread" : "threads"}
           </span>
         </Link>
       ))}

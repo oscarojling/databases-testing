@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import { createClient } from "@/lib/supabase/serverClient";
 import { commentSchema } from "./schemas";
@@ -25,5 +25,5 @@ export const AddCommentAction = async ({
     .insert({ postid: postid, userid: user.id, ...parsedData })
     .throwOnError();
 
-    revalidatePath("/")
+  revalidatePath("/");
 };
