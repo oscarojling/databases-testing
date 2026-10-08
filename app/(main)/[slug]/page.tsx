@@ -1,4 +1,4 @@
-import { getPostComment, getSinglePost } from "@/lib/supabase/queries";
+import { getSinglePost } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/serverClient";
 import DeleteButton from "./deleteButton";
 import Link from "next/link";
