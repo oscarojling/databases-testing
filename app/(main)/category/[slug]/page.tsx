@@ -10,7 +10,6 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     <div className="mx-auto w-full max-w-7xl p-4 md:py-12">
       {data && (
         <>
-          <h1 className="heading mb-4">{data?.name}</h1>
           <nav className="mb-4 flex items-center gap-1 text-base md:text-sm text-ink/60">
             <Link href="/" className="hover:text-accent-dark">
               Forums
@@ -18,6 +17,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             <ChevronRight className="h-5 w-5" />
             <span className="text-ink">{data?.name}</span>
           </nav>
+          <h1 className="heading mb-4">{data?.name}</h1>
           <div className="overflow-hidden rounded-md border border-line bg-white">
             <h2 className="bg-steel px-4 py-2 font-bold text-white">Threads</h2>
             {data?.Posts.map((post) => (

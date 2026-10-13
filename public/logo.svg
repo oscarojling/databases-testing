@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" role="img" aria-label="Scout Boards logo">
+  <rect x="11" y="2" width="12" height="8" rx="2" fill="#5b7fa8"/>
+  <rect x="41" y="2" width="12" height="8" rx="2" fill="#5b7fa8"/>
+  <rect x="24" y="14" width="16" height="8" rx="3" fill="#eef3f8"/>
+  <rect x="5" y="9" width="24" height="16" rx="4" fill="#eef3f8"/>
+  <rect x="35" y="9" width="24" height="16" rx="4" fill="#eef3f8"/>
+  <circle cx="17" cy="32" r="14" fill="#eef3f8"/>
+  <circle cx="47" cy="32" r="14" fill="#eef3f8"/>
+  <circle cx="17" cy="32" r="9.5" fill="#14b8a6"/>
+  <circle cx="47" cy="32" r="9.5" fill="#14b8a6"/>
+  <circle cx="13.5" cy="28.5" r="3" fill="#ffffff" opacity="0.9"/>
+  <circle cx="43.5" cy="28.5" r="3" fill="#ffffff" opacity="0.9"/>
+</svg>

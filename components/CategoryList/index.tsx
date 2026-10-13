@@ -6,7 +6,10 @@ const CategoryList = async () => {
 
   return (
     <div className="overflow-hidden rounded-md border border-line bg-white">
-      <h2 className="bg-steel px-4 py-2 font-bold text-white">Forums</h2>
+      <h2 className="flex items-center justify-between bg-steel px-4 py-2 font-bold text-white">
+        <span className="text-lg">Forum</span>
+        <span className="text-sm font-normal text-ice">Threads</span>
+      </h2>
       {data!.map((category) => (
         <Link
           key={category.id}
@@ -14,7 +17,7 @@ const CategoryList = async () => {
           className="flex items-center justify-between gap-4 border-t border-line px-4 py-4 hover:bg-ice"
         >
           <span className="font-semibold text-navy">{category.name}</span>
-          <span className="shrink-0 text-sm text-center">
+          <span className="shrink-0 rounded-full border border-line bg-white px-3 py-1 text-sm text-steel">
             {category.Posts[0].count}{" "}
             {category.Posts[0].count === 1 ? "thread" : "threads"}
           </span>
