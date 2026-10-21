@@ -6,10 +6,8 @@ export default async function Home() {
   return (
     <div className="mx-auto w-full max-w-7xl p-4 md:py-12">
       <h1 className="heading mb-4">Forum List</h1>
-      <div className="grid gap-4 md:grid-cols-3">
-        <div className="grid md:col-span-2">
+      <div className="grid gap-4 md:grid-cols-[3fr_1fr]">
           <CategoryList />
-        </div>
         <RecentPost />
       </div>
     </div>
