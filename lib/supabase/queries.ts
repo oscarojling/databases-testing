@@ -16,7 +16,7 @@ export const getCategories = async () => {
   const supabase = createClient();
   return await supabase
     .from("Categories")
-    .select(`id, name, slug, Posts(count)`)
+    .select(`id, name, slug, description, Posts(count)`)
     .order("created_at", { ascending: false });
 };
 

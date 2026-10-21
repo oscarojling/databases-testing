@@ -16,7 +16,10 @@ const CategoryList = async () => {
           href={`/category/${category.slug}`}
           className="flex items-center justify-between gap-4 border-t border-line px-4 py-4 hover:bg-ice"
         >
+          <div className="flex flex-col">
           <span className="font-semibold text-navy">{category.name}</span>
+          <span className="text-ink/60 text-sm">{category.description}</span>
+          </div>
           <span className="shrink-0 rounded-full border border-line bg-white px-3 py-1 text-sm text-steel">
             {category.Posts[0].count}{" "}
             {category.Posts[0].count === 1 ? "thread" : "threads"}

@@ -17,18 +17,21 @@ export type Database = {
       Categories: {
         Row: {
           created_at: string
+          description: string | null
           id: string
           name: string
           slug: string
         }
         Insert: {
           created_at?: string
+          description?: string | null
           id?: string
           name: string
           slug: string
         }
         Update: {
           created_at?: string
+          description?: string | null
           id?: string
           name?: string
           slug?: string
