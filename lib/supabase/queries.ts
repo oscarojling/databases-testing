@@ -20,6 +20,17 @@ export const getCategories = async () => {
     .order("created_at", { ascending: false });
 };
 
+export const getRecentPost = async () => {
+  const supabase = createClient();
+  return await supabase
+    .from("Posts")
+    .select(
+      'id, title, slug, created_at,  author("username"), category("name", "slug")',
+    )
+    .order("created_at", { ascending: false })
+    .limit(5);
+};
+
 export const getSinglePost = async (slug: string) => {
   const supabase = createClient();
   return await supabase
